@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 import random
 import networkx as nx
+import compression as com
 
 global n
 global k
 global adjmatrix
 
-n = 10
+n = 2
 k = 1
 adjmatrix = np.zeros(shape=(n,n))
 def AdjMatrix(n, mode):          
@@ -133,7 +134,14 @@ while time < 10:
     time += 0.1
     c += 1
 
+#ADD A LEGEND TO THE GRAPHS
 draw_graph()
 plt.plot(time_values, value_matrix[:])  
 plt.show()
+
+
+#Creates a B+W image and compresses it
+bruh = com.gen_image(value_matrix, n, time_values)
+com.compress(bruh)
+
 
